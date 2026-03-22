@@ -1,8 +1,22 @@
+# Compiled files
+/bin/
+/target/
+/out/
+
 # Eclipse files
 .project
 .classpath
 .settings/
 
-# build files
-bin/
-target/
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# JAR files (libraries)
+*.jar
+
+# Optional: lib folder
+/lib/
