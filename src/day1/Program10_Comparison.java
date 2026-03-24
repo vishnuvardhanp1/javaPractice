@@ -6,7 +6,7 @@ package day1;
 /**
  * 
  */
-public class Program10_Comaparison {
+public class Program10_Comparison {
 
 	/**
 	 * @param args
