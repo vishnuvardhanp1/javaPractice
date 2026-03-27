@@ -23,6 +23,8 @@ public class Program5_Reverse {
 			num=num/10;
 		}
 		System.out.println("Reverse of number : " + reverse);
+		
+		
 	}
 
 }
