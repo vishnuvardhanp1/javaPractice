@@ -22,8 +22,22 @@ public class SwapNumbersExample1 {
 		b=a-b;
 		a=a-b;
 		
+		
 		System.out.println("The A is " + a);
 		System.out.println("The B is " + b);
+		
+		//using temp variables
+		a=40;
+		b=50;
+		int c;
+		c=b;
+		b=a;
+		a=c;
+		
+		System.out.println("The A is " + a);
+		System.out.println("The B is " + b);
+		
+		
 		
 
 	}

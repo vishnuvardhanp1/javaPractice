@@ -13,7 +13,7 @@ public class Program1_Factors {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int num=20;
+		int num=60;
 		for(int fact=1;fact<=num;fact++) {
 			if(fact == num) {
 				System.out.print(fact);
