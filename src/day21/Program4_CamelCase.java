@@ -33,7 +33,7 @@ public class Program4_CamelCase {
     		
     	
     	
-    	upperAlpha=s.charAt(0)+"";
+    	upperAlpha=(s.charAt(0)+"").toLowerCase();
     	}
     	camelCase=camelCase+upperAlpha+s.substring(1,s.length());
     	index++;

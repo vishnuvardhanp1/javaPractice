@@ -13,7 +13,7 @@ public class Program5_PrimeNumbers {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int num=89;
+		int num=9;
 			if(num == 1)
 				System.out.println("Neither prime nor composite");
 			else if(num == 2)
