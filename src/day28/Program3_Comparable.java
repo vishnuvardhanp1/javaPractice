@@ -29,7 +29,7 @@ class Student implements Comparable<Student>{
 		
 	}
 }
-public class Program3_SortingArrayList {
+public class Program3_Comparable {
 
 	/**
 	 * @param args
