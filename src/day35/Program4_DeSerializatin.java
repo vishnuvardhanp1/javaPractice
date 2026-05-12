@@ -25,7 +25,7 @@ public class Program4_DeSerializatin {
 			Student_G student;
 			try {
 				student = (Student_G) ois.readObject();
-				System.out.println(student.rollNo + " " + student.name);
+				System.out.println(student.rollNo + " " + student.name + "" +student.grade+""+student.password);
 			} catch (ClassNotFoundException | IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
