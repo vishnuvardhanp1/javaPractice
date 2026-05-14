@@ -46,6 +46,7 @@ public class Program1_Annotation {
         	gsit annotation = (gsit) method.getAnnotation(gsit.class);
 
             System.out.println( annotation.batchCode());
+            
         }
         
 	}
