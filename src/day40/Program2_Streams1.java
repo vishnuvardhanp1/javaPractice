@@ -1,12 +1,15 @@
 /**
  * 
  */
-package day39;
+package day40;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import java.util.OptionalInt;
 import java.util.stream.Collectors;
 
 class Student {
@@ -91,7 +94,7 @@ class Student {
 /**
  * 
  */
-public class Program2_Stream {
+public class Program2_Streams1 {
 
 	/**
 	 * @param args
@@ -153,12 +156,94 @@ public class Program2_Stream {
 	.sorted((a,b)->a.getName().compareTo(b.getName()))
 	.forEach(s->System.out.println(s.name  ));
 	
-	System.out.println("\n Sort on marks  using compare To desc");
+	System.out.println("\n Sort on marks  ");
 	studentList
 	.stream()
 	.sorted((a,b)->a.marks-b.marks)
 	.forEach(s->System.out.println(s.name + " " + s.marks ));
 	
+	System.out.println("Map InTo Dept");
+	List<String> dept=studentList.stream().map(Student::getDept)
+			
+			.collect(Collectors.toList());
+	dept.forEach(s->System.out.println(s));
+	
+	//List<Integer> marks=studentList.stream().map(Student::getMarks());
+	
+	System.out.println("Marks Total");
+	
+	
+	
+	int sum=studentList.stream().map(Student::getMarks).mapToInt(Integer::intValue).sum();
+	System.out.println(sum);
+	
+	System.out.println(" Maximum marks 1");
+	Optional max=studentList.stream().map(Student::getMarks).reduce(Integer::max);
+	System.out.println(max.get());
+ 	
+	System.out.println(" Maximum marks 2");
+	OptionalInt max2=studentList.stream().map(Student::getMarks)
+			.mapToInt(Integer::intValue).max();
+	System.out.println(max2.getAsInt());
+	
+	System.out.println("Maximum marks name");
+	Optional<Student> max3=studentList.stream().max((a,b)->Integer.compare(a.marks, b.marks));
+	max3.ifPresent(s->System.out.println(s.getName()));
+	
+	//Example of map and reduce
+	
+	List<Integer> nums = Arrays.asList(1,2,3,4);
+
+	int result =
+	    nums.stream()
+	        .map(n -> n*n)
+	        .reduce(0, (a,b)->a+b);
+
+	System.out.println(result);
+	
+	// process
+	
+/*	1,2,3,4
+	↓ map
+	1,4,9,16 - multiplies each number with same number
+	↓ reduce - combines result as total
+	30 */
+	
+	// output 30
+	
+	System.out.println("Adding +5 marks to each student using map");
+
+	studentList.stream()
+        .map(s -> {
+            s.setMarks(s.getMarks() + 5);
+            return s;
+        })
+        .forEach(s -> System.out.println(
+                s.getName() + " : " + s.getMarks()));
+	
+	Optional<Integer> total =
+	        studentList.stream()
+	                .map(s -> s.getMarks())
+	                .reduce((a, b) -> a + b);
+
+	total.ifPresent(System.out::println);
+	
+	System.out.println("Adding +5 marks to each student using peek");
+
+	studentList.stream()
+    .peek(s -> s.setMarks(s.getMarks() + 5))
+    .forEach(s -> System.out.println(
+            s.getName() + " : " + s.getMarks()));
+
+
+	System.out.println("Total Marks");
+
+	Optional<Integer> total1 =
+	        studentList.stream()
+	                .map(s -> s.getMarks())
+	                .reduce((a, b) -> a + b);
+
+	total1.ifPresent(System.out::println);
 	
 	}
 
