@@ -7,10 +7,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.OptionalInt;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 class Student {
 	int rollNo;
@@ -105,13 +108,13 @@ public class Program2_Streams1 {
     Student obj1=new Student(2,"Yatin","ECE",80);
     Student obj2=new Student(3,"Astha","CSE",90);
     Student obj3=new Student(4,"Bhawna","CSE",70);
-    
+    Student obj5=new Student(3,"Astha","CSE",90);
     List<Student> studentList=new ArrayList<Student>();
     studentList.add(obj);
     studentList.add(obj1);
     studentList.add(obj2);
     studentList.add(obj3);
-    
+    studentList.add(obj5);
     //Filter name starts with Y or A
     List<Student> filterList=
     		studentList
@@ -190,8 +193,57 @@ public class Program2_Streams1 {
 	Optional<Student> max3=studentList.stream().max((a,b)->Integer.compare(a.marks, b.marks));
 	max3.ifPresent(s->System.out.println(s.getName()));
 	
-	//Example of map and reduce
+	System.out.println("Count Students scoring more than 70 ");
+	Long count=studentList.stream().filter(s->s.marks>=70).count();
+	System.out.println(count);
 	
+	System.out.println("Print name of person scoring more than 70 first ");
+	Optional<Student> opt=studentList.stream().filter(s->s.marks>=70).findFirst();
+	System.out.println(opt.get().name);
+	
+	System.out.println("Topper of the batch ");
+	Optional<Student> opt1=studentList.stream().sorted(Comparator.comparing(Student::getMarks).reversed()).findFirst();
+	System.out.println(opt1.get().name);
+	
+	System.out.println("Top 3 on marks limit");
+	studentList.stream().sorted((a,b)-> b.marks-a.marks)
+	.limit(3).forEach(s->System.out.println(s.name));
+	
+	System.out.println("Distinct");
+	studentList.stream().distinct().forEach(s->System.out.println(s.name));
+	
+	
+	System.out.println("Skip");
+	studentList.stream().sorted(Comparator.comparingInt(Student::getMarks).reversed()).skip(2)
+	.forEach(s->System.out.println(s.name));
+	
+	System.out.println("Highest scorer in each dept");
+	
+	Map<String, Optional<Student>> groupList=
+			studentList.stream().collect(Collectors.groupingBy(Student::getDept,
+					Collectors.maxBy((a,b)->a.getMarks()-b.getMarks())));
+	for(Map.Entry<String,Optional<Student>> e:groupList.entrySet()) 
+	{
+		System.out.println(e.getKey() + ":" + e.getValue().get().marks + ":" + e.getValue().get().name);
+	}
+	
+	System.out.println("fibonacci");
+	
+	Stream.iterate(new int[] {0,1}, arr->new int[] {arr[1],arr[1]+arr[0]})
+	.limit(10).forEach(s->System.out.println(s[0]+" "));
+	
+	System.out.println("Boxed int stream to stream<Integer>");
+	
+	List<Integer> list2=IntStream.range(1, 11).boxed().collect(Collectors.toList());
+	list2.forEach(s->System.out.println(s+" "));
+	
+	
+	System.out.println("Random");
+	//Stream<Double> randomList=
+	Stream.generate(Math::random).limit(3).map(num->num*10).map(f->Math.round(f))
+	.forEach(s->System.out.println(s+ " "));
+			
+			//Example of map and reduce
 	List<Integer> nums = Arrays.asList(1,2,3,4);
 
 	int result =
