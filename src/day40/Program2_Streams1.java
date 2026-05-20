@@ -243,9 +243,21 @@ public class Program2_Streams1 {
 	Stream.generate(Math::random).limit(3).map(num->num*10).map(f->Math.round(f))
 	.forEach(s->System.out.println(s+ " "));
 			
+	System.out.println("Flat Map");
+	List<String> listStr=Arrays.asList("hello","all","how","are","you");
+	List<String> output=listStr.stream().flatMap(s->Arrays.stream(s.split("")))
+			.collect(Collectors.toList());
+	System.out.println(output.size());
+	output.forEach(s->System.out.print(s+" "));
+	
+	System.out.println("\n Sort on basis of length");
+	
 			//Example of map and reduce
 	List<Integer> nums = Arrays.asList(1,2,3,4);
-
+	List<String> listStr1=Arrays.asList("hellooo","a","them","no","yes");
+	listStr1.stream().sorted(Comparator.comparing(String::length))
+	.forEach(s->System.out.println(s));
+	
 	int result =
 	    nums.stream()
 	        .map(n -> n*n)
