@@ -309,6 +309,14 @@ public class Program2_Streams1 {
 
 	total1.ifPresent(System.out::println);
 	
+	/*
+	functional interfaces
+	Stream api
+	predicate input boolean isUppercase() contains() equals()
+	function input output split,substring,map(),sorted()
+	consumer input no output foreach()
+	supplier no input output reverse()
+	*/
 	}
 
 }
