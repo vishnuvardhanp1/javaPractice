@@ -312,7 +312,7 @@ public class Program2_Streams1 {
 	/*
 	functional interfaces
 	Stream api
-	predicate input boolean isUppercase() contains() equals()
+	predicate input boolean isUppercase() contains() equals() filter()
 	function input output split,substring,map(),sorted()
 	consumer input no output foreach()
 	supplier no input output reverse()
