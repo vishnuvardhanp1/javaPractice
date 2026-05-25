@@ -29,25 +29,38 @@ public class Program5_Checkbox {
 		    Thread.sleep(2000);
 		    
 		    driver.manage().window().fullscreen();
+		   
 		    Thread.sleep(2000);
 		    List<WebElement> checkboxes =
 		    		driver.findElements(By.name("programmingLang"));
 
 		    for(WebElement cb : checkboxes)
 		    {
-		        if(cb.getAttribute("value").equals("java"))
+		       /* if(cb.getAttribute("value").equals("java"))
 		        {
 		            cb.click();
 		            break;
-		        }
+		        }*/
+		    	 cb.click();
+		    	 Thread.sleep(2000);
 		    }
+		    Thread.sleep(2000);
+		    WebElement inputbox=driver.findElement(By.id("input_text"));
+ 			inputbox.clear();
+ 			Thread.sleep(2000);
+ 			inputbox.sendKeys("Java");
+ 			Thread.sleep(2000);
+ 			List<WebElement> genderList= driver.findElements(By.name("gender"));
+ 			genderList.get(1).click();
+ 			Thread.sleep(2000);
 		    
-		    driver.findElement(
+		    
+		/*    driver.findElement(
 		    		By.cssSelector("input[name='programmingLang'][value='java']")
 		    		).click();
 		    driver.findElement(
 		    		By.cssSelector("input[name='programmingLang'][value='python']")
-		    		).click();
+		    		).click();*/
 		    Thread.sleep(2000);
 		    driver.quit();
 	}
