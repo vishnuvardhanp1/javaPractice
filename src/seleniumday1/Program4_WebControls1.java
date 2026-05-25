@@ -6,17 +6,14 @@ package seleniumday1;
 import java.util.List;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.interactions.Actions;
 
 /**
  * 
  */
-public class Program3_ScreenSize {
+public class Program4_WebControls1 {
 
 	/**
 	 * @param args
@@ -34,13 +31,22 @@ public class Program3_ScreenSize {
 		    Thread.sleep(2000);
 		    driver.manage().window().fullscreen();
 		    Thread.sleep(2000);
-		    driver.manage().window().setSize(new Dimension(500,500));
-		    Thread.sleep(2000);
-		    driver.manage().window().setPosition(new Point(50,200));
-		   
-		    Thread.sleep(2000);
-		    driver.quit();
-		    
+		    WebElement inputbox=driver.findElement(By.id("input_text"));
+ 			inputbox.clear();
+ 			Thread.sleep(2000);
+ 			inputbox.sendKeys("Java");
+ 			Thread.sleep(2000);
+ 			List<WebElement> genderList= driver.findElements(By.name("gender"));
+ 			genderList.get(1).click();
+ 			Thread.sleep(2000);
+/*    Actions act = new Actions(driver);
+
+ WebElement maleRadio = genderList.get(0);
+
+ act.moveToElement(maleRadio)
+    .click()
+    .perform();*/
+ 			driver.quit();
 	}
 
 }
