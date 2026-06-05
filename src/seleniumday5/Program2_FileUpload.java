@@ -36,6 +36,7 @@ public class Program2_FileUpload {
 	    js.executeScript(
 	    		"arguments[0].scrollIntoView(true);",
 	    		fileUpload);
+	    Thread.sleep(2000);
 	    js.executeScript("window.scrollBy(0,2000)");
 	    Thread.sleep(2000);
 	    js.executeScript("window.scrollBy(0,document.body.scrollHeight)");
