@@ -21,7 +21,7 @@ public class Program2_Default2 {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
     O o=new O();
-    o.bye();
+    //o.bye();
 	}
 
 }
